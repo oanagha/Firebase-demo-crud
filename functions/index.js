@@ -17,19 +17,19 @@
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("<h1>Hello from Firebase!</h1>");
 // });
-const functions = require("firebase-functions");
-const express = require("express");
-const cors = require("cors");
+ const functions = require("firebase-functions");
+ const express = require("express");
+ const cors = require("cors");
 
-const app = express();
+ const app = express();
 
-const admin = require("firebase-admin");
-admin.initializeApp();
+ const admin = require("firebase-admin");
+ admin.initializeApp();
 
-const db = admin.firestore();
+ const db = admin.firestore();
 
-app.use(cors({ origin: true }));
-app.use(express.json());
+ app.use(cors({ origin: true }));
+ app.use(express.json());
 
 // app.get("/test", (req, res) => {
 //     res.status(200).json({ message: "GET request successful!", query: req.query });
@@ -43,7 +43,7 @@ app.use(express.json());
 //     res.status(200).json({ message: "POST request successful!", receivedData: data });
 // });
 
- app.post("/addProduct", async (req, res) => {
+  app.post("/addProduct", async (req, res) => {
     try {
         const productData = req.body;
 
@@ -51,12 +51,12 @@ app.use(express.json());
             return res.status(401).json({ error: "Invalid product data!" });
         }
         const newProductRef = await db.collection("products").add(productData);
-        res.status(201).json({ message: "Product added successfully!", productId: newProductRef.id });
+        res.status(201).json({ message: "Product  successfully added!", productId: newProductRef.id });
     } catch (error) {
         res.status(400).json({ error: error.message })
-    }
+    }  
  });
-
+ 
  app.get("/getProduct", async (req, res) => {
     try {
         const productRef = await db.collection("products").get();
