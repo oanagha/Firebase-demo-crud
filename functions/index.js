@@ -54,7 +54,7 @@ app.use(express.json());
         res.status(201).json({ message: "Product added successfully!", productId: newProductRef.id });
     } catch (error) {
         res.status(400).json({ error: error.message })
-    }
+    } 
  });
 
  app.get("/getProduct", async (req, res) => {
