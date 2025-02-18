@@ -54,9 +54,8 @@
         res.status(201).json({ message: "Product  successfully added!", productId: newProductRef.id });
     } catch (error) {
         res.status(400).json({ error: error.message })
-    }  
+    } 
  });
- 
  app.get("/getProduct", async (req, res) => {
     try {
         const productRef = await db.collection("products").get();
@@ -85,7 +84,7 @@
             return res.status(404).json({ error: "Product not found!" });
         } 
         await productRef.update(updates);
-        res.status(200).json({ message: "Product updated successfully!",updates });
+        res.status(200).json({ message: "Product  successfully updated!",updates });
     } catch (error) {
         res.status(500).json({ error: error.message });
     } 
